@@ -1,46 +1,40 @@
 # CSV Combiner
+# PMG Challenge
+# Ping Chen
 
-Write a command line program that takes several CSV files as arguments. Each CSV
-file (found in the `fixtures` directory of this repo) will have the same
-columns. Your script should output a new CSV file to `stdout` that contains the
-rows from each of the inputs along with an additional column that has the
-filename from which the row came (only the file's basename, not the entire path).
-Use `filename` as the header for the additional column.
+CSV Combiner makes it possible to merge N-number of csv file(s) into one output file
 
-##  Considerations
-* You should use coding best practices. Your code should be re-usable and extensible.
-* Your code should be testable by a CI/CD process. 
-* Unit tests should be included.
+## Languages used 
+* Standard Java 16.0.1
+* No external dependencies
+
+## First time using
+Compile with javac version 16.0.1+ 
+```
+$ cd csv-combiner
+$ javac App.java
+```
+
+## Running the program
+``` 
+$ java App [Input Filepath One] [Input Filepath Two] [Input FilePath n...] [Output Filename]
+```
+* Input Filepath: "./foldername/filename.csv"
+* Output FileName: "outputname.csv"
+
 
 ## Example
-This example is provided as one of the ways your code should run. It should also be
-able to handle more than two inputs, inputs with different columns, and very large (> 2GB) 
-files gracefully.
-
 ```
-$ ./csv-combiner.php ./fixtures/accessories.csv ./fixtures/clothing.csv > combined.csv
+$ java App ./fixtures/accessories.csv ./fixtures/clothing.csv output.csv
 ```
+ 
+ ## Result
 
-Given two input files named `clothing.csv` and `accessories.csv`.
+ email_hash  | category | filename
+------------- | ------------- | -------------
+b9f6f22276c919da793da65c76345ebb0b072257d12402107d09c89bc369a6b6  | Satchels | accessories.csv
+c2b5fa9e09ef2464a2b9ed7e351a5e1499823083c057913c6995fdf4335c73e7  | Purses   | accessories.csv
+587604aa941d462c7d6bc0da4181939374e8df5c3fca2dc1b3ea496268c81263  | Pants    | clothing.csv
+c77325c0f8254e2baba043f1bf216b8aad4f940dc7ca6a41e711dc26d4b7832c  | Capris   | clothing.csv
 
-|email_hash|category|
-|----------|--------|
-|21d56b6a011f91f4163fcb13d416aa4e1a2c7d82115b3fd3d831241fd63|Shirts|
-|21d56b6a011f91f4163fcb13d416aa4e1a2c7d82115b3fd3d831241fd63|Pants|
-|166ca9b3a59edaf774d107533fba2c70ed309516376ce2693e92c777dd971c4b|Cardigans|
-
-|email_hash|category|
-|----------|--------|
-|176146e4ae48e70df2e628b45dccfd53405c73f951c003fb8c9c09b3207e7aab|Wallets|
-|63d42170fa2d706101ab713de2313ad3f9a05aa0b1c875a56545cfd69f7101fe|Purses|
-
-Your script would output
-
-|email_hash|category|filename|
-|----------|--------|--------|
-|21d56b6a011f91f4163fcb13d416aa4e1a2c7d82115b3fd3d831241fd63|Shirts|clothing.csv|
-|21d56b6a011f91f4163fcb13d416aa4e1a2c7d82115b3fd3d831241fd63|Pants|clothing.csv|
-|166ca9b3a59edaf774d107533fba2c70ed309516376ce2693e92c777dd971c4b|Cardigans|clothing.csv|
-|176146e4ae48e70df2e628b45dccfd53405c73f951c003fb8c9c09b3207e7aab|Wallets|accessories.csv|
-|63d42170fa2d706101ab713de2313ad3f9a05aa0b1c875a56545cfd69f7101fe|Purses|accessories.csv|
 
